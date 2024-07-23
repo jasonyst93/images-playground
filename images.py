@@ -1,17 +1,16 @@
 from PIL import Image , ImageFilter
 
-im = Image.open("./pokedex/pikachu.jpg")
+new_image = Image.open("./astro.jpg")
+print(new_image.size)
 
-#let's appying ImageFilter (BLUR)
-filtered_img = im.filter(ImageFilter.BLUR)
-#Save the blur image (Why png? It's because png support ImageFilter)
-filtered_img.save("blur.png",'png')
+new_image = new_image.resize((400,200))
+new_image.save('thumbnail.jpg')
+print(new_image.size)
 
-#convert format 
-grey_img = im.convert('L')
-grey_img.save("grey.png",'png')
+#It looks weired... How can we keep the aspect ratio
+thumbnail =Image.open("./astro.jpg")
+thumbnail.thumbnail((400,400)) #  giving maxium within - 400 x 400 
+thumbnail.save('thumbnail_2.jpg')
 
-filtered_img.show()
-im.show()
-grey_img.show()
-
+print(thumbnail.size)
+#Useful to create profile picture
